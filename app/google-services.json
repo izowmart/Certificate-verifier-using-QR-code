@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "158428113637",
+    "firebase_url": "https://certificate-verification-de422.firebaseio.com",
+    "project_id": "certificate-verification-de422",
+    "storage_bucket": "certificate-verification-de422.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158428113637:android:391a2682da275022",
+        "android_client_info": {
+          "package_name": "com.marttech.certverifier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158428113637-hldklr5jlfgisjsuf4keif18f06u6gtm.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "158428113637-hldklr5jlfgisjsuf4keif18f06u6gtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdVQ2VWyxseg2LPBWfz0VCBzHIQwneCYU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
