@@ -5,12 +5,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorProfile"
     tools:context=".BottomNavActivies.Submitted_NavBar">
 
     <RelativeLayout
         android:id="@+id/rellayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rellAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/colorPrimary">
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/submittedToobar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.AppBarLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rellayoutBottomBar"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_marginTop="47dp"
+            android:paddingTop="3dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:paddingBottom="3dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rellayoutBottomBar"
@@ -29,6 +70,5 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>

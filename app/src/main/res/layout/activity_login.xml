@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
+    android:background="@android:color/background_light"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -22,8 +23,9 @@
         android:id="@+id/textLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aready have an account?"
+        android:text="@string/already_have_an_account"
         android:textStyle="bold"
+        android:textSize="16sp"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"/>
 
@@ -56,7 +58,7 @@
         android:layout_below="@id/email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:singleLine="true"/>
+        android:singleLine="true" />
 
     <Button
         android:layout_width="match_parent"

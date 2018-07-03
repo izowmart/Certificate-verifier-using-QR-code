@@ -22,7 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.zxing.Result;
-import com.marttech.certverifier.Helper.Mysingleton;
+import com.marttech.certverifier.Adapters.Mysingleton;
 import com.marttech.certverifier.R;
 
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class QRfragment extends Fragment implements ZXingScannerView.ResultHandl
     String singleParsed = "";
     String dataParsed = "";
 
-    String server_url = "http://192.168.0.27/Certificate_verification/response.php";
+    String server_url = "http://192.168.0.13/Certificate_verification/response.php";
 
 
 

@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:label="@string/Title"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -38,16 +38,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".BottomNavActivies.Profile_NavBar" />
-        <activity android:name=".BottomNavActivies.Report_NavBar" />
-        <activity android:name=".BottomNavActivies.Submitted_NavBar" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".AppBarActivity" />
-        <activity
-            android:name=".ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+        <activity android:name=".BottomNavActivies.Report_NavBar"
+            android:label="New report"
+            android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".BottomNavActivies.Submitted_NavBar" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".ResetPassword"/>
+        <activity android:name=".Profile_Settings" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+                  android:theme="@style/Base.Theme.AppCompat">
+        </activity>
     </application>
 
 </manifest>

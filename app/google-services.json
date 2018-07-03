@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "158428113637-f7j5gr6aru4sd12bru51bj22d66grsgh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marttech.certverifier",
+            "certificate_hash": "52b3f796e53c1dcad7c4bf6da9398828f1e01d83"
+          }
+        },
+        {
           "client_id": "158428113637-hldklr5jlfgisjsuf4keif18f06u6gtm.apps.googleusercontent.com",
           "client_type": 3
         },
@@ -33,8 +41,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158428113637-hldklr5jlfgisjsuf4keif18f06u6gtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

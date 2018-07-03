@@ -8,10 +8,6 @@
         android:id="@+id/send"
         android:icon="@drawable/ic_send_24dp"
         android:title=""
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/sign_out"
-        android:title="@string/sign_out"
-        app:showAsAction="never"/>
 </menu>

@@ -9,6 +9,20 @@
     android:orientation="vertical"
     tools:context=".BottomNavActivies.Report_NavBar">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/reportToobar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
     <RelativeLayout
         android:id="@+id/rellayout"
         android:layout_width="match_parent"

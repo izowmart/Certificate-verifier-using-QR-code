@@ -1,4 +1,4 @@
-package com.marttech.certverifier.Helper;
+package com.marttech.certverifier.Adapters;
 
 import android.content.Context;
 

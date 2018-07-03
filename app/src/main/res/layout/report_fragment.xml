@@ -7,27 +7,41 @@
     android:background="@color/colorBackground"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_margin="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/paragraph_1_report"
-        android:textSize="18sp"/>
-    <ImageView
-        android:id="@+id/imgQR"
-        android:layout_margin="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text1"
-        android:contentDescription="TODO" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_margin="12dp"
-        android:layout_height="wrap_content"
-        android:text="@string/bottomParagraph2report"
-        android:layout_below="@id/imgQR"
-        android:textSize="18sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_margin="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paragraph_1_report"
+                android:textSize="18sp"/>
+            <ImageView
+                android:id="@+id/imgQR"
+                android:layout_margin="12dp"
+                android:layout_width="230dp"
+                android:layout_height="180dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/text1"
+                android:src="@drawable/n" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_height="wrap_content"
+                android:text="@string/bottomParagraph2report"
+                android:layout_below="@id/imgQR"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

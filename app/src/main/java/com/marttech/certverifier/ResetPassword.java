@@ -1,5 +1,6 @@
 package com.marttech.certverifier;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,13 @@ public class ResetPassword extends AppCompatActivity {
     Button resetPasswordBtn;
     TextView back;
     FirebaseAuth mAuth;
+    ProgressDialog mProgressDialog;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,7 @@ public class ResetPassword extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
 
         mAuth = FirebaseAuth.getInstance();
+        mProgressDialog = new ProgressDialog(this);
 
         resetEmail = findViewById(R.id.resetEmail);
         resetPasswordBtn = findViewById(R.id.resetPasswordBtn);
@@ -36,21 +45,29 @@ public class ResetPassword extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ResetPassword.this, LoginActivity.class));
+                Intent intent = new Intent(new Intent(ResetPassword.this, LoginActivity.class));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
         resetPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mProgressDialog.setTitle("Resetting Password");
+                mProgressDialog.setMessage("Please wait....");
+                mProgressDialog.show();
                 String enteredResetEmail = resetEmail.getText().toString();
                 if (TextUtils.isEmpty(enteredResetEmail)){
-                    Toast.makeText(ResetPassword.this, "Email field can't be empty!", Toast.LENGTH_LONG).show();
+                    mProgressDialog.dismiss();
+                    resetEmail.setError("email is required!");
                     return;
                 }
 
                 if (!(enteredResetEmail.contains("@"))){
-                    Toast.makeText(ResetPassword.this, "Invalidate email entered", Toast.LENGTH_SHORT).show();
+                    mProgressDialog.dismiss();
+                    resetEmail.setError("Enter a valid email address!");
                     return;
                 }
 
@@ -59,8 +76,10 @@ public class ResetPassword extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                              if (task.isSuccessful()){
+                                 mProgressDialog.dismiss();
                                  Toast.makeText(ResetPassword.this, "We have sent you instruction to rest your password in your email", Toast.LENGTH_SHORT).show();
                              }else{
+                                 mProgressDialog.dismiss();
                                  Toast.makeText(ResetPassword.this, "Failed to send reset email", Toast.LENGTH_SHORT).show();
                              }
                             }

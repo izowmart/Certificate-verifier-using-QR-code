@@ -10,5 +10,6 @@
     <color name="colorDivider">#fafafa</color>
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
+    <color name="colorProfile">#3B4041</color>
 
 </resources>

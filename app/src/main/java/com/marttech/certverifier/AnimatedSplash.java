@@ -12,6 +12,11 @@ public class AnimatedSplash extends Activity{
 
 
     RelativeLayout relativeLayout;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(0,0);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +35,7 @@ public class AnimatedSplash extends Activity{
                 }catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
-                    startActivity(new Intent(AnimatedSplash.this, MainActivity.class));
+                    startActivity(new Intent(AnimatedSplash.this, LoginActivity.class));
                 }
             }
         };
@@ -39,8 +44,8 @@ public class AnimatedSplash extends Activity{
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
         finish();
     }
 
