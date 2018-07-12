@@ -22,7 +22,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
     <RelativeLayout
         android:id="@+id/rellayout"
         android:layout_width="match_parent"

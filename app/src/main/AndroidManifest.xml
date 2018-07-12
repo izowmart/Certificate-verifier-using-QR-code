@@ -19,7 +19,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".AnimatedSplash"
-            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +41,9 @@
             android:label="New report"
             android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".BottomNavActivies.Submitted_NavBar" />
+        <activity android:name=".BottomNavActivies.Submitted_NavBar"
+            android:label="Filed Reports">
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ResetPassword"/>

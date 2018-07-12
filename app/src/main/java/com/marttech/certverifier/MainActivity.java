@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 sendToSettingsActivity();
             }
         });
-        dbProfileRef.addValueEventListener(new ValueEventListener() {
+        dbProfileRef.child(currentUID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkUserExistence() {
-        dbProfileRef = FirebaseDatabase.getInstance().getReference().child("Users");
         dbProfileRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,7 +40,8 @@ public class Profile_Settings extends AppCompatActivity {
     private EditText nameInput,phoneInput,placeInput,emailInput;
     private CircleImageView settingsProfileImg;
     //    TextInputEditText passwordInput;
-    private Button settingsAccountBtn,editProfileImg;
+    private Button settingsAccountBtn;
+    private ImageView editProfileImg;
     private ProgressDialog mProgressDialog;
     private FirebaseAuth mAuth;
     private DatabaseReference userDbRef;

@@ -24,6 +24,8 @@ import com.marttech.certverifier.MainActivity;
 import com.marttech.certverifier.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 public class Submitted_NavBar extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
@@ -45,11 +47,12 @@ public class Submitted_NavBar extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUID = mAuth.getCurrentUser().getUid();
-        subPostRef = FirebaseDatabase.getInstance().getReference().child("Reports");
+        subPostRef = FirebaseDatabase.getInstance().getReference().child("Reports").child(currentUID);
 
-        Toolbar toolbar = findViewById(R.id.submittedToobar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Filed Reports");
+        Toolbar submittedToolbar = findViewById(R.id.submittedToobar);
+        setSupportActionBar(submittedToolbar);
+        submittedToolbar.setTitle("Filed Reports");
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
@@ -159,6 +162,7 @@ public class Submitted_NavBar extends AppCompatActivity {
             Picasso.with(ctx)
                     .load(capturedimage)
                     .fit()
+                    .placeholder(R.drawable.post)
                     .into(postImg);
 
         }

@@ -51,6 +51,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Report_NavBar extends AppCompatActivity {
 
@@ -64,13 +65,12 @@ public class Report_NavBar extends AppCompatActivity {
     private DatabaseReference dbSaveRef;
     private StorageReference captureImgRef;
 
-    private String image,selectedRadio,currentUserId;
+    private String image,selectedRadio,currentUserId,downloadedUrl;
     private ProgressDialog mProgressDialog;
     static final int CAM_REQUEST = 1;
     static final int SELECT_FILE = 4;
-    Uri imageHoldUri = null;
-    Bitmap bitmap;
-    byte [] bytes;
+    private Bitmap bitmap;
+    private UUID uuid;
 
     String server_url ="http://192.168.0.13/Certificate_verification/report.php";
     AlertDialog.Builder builder;
@@ -86,9 +86,10 @@ public class Report_NavBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_nav_bar);
 
+        uuid = UUID.randomUUID();
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
-        dbSaveRef = FirebaseDatabase.getInstance().getReference().child("Reports").child(currentUserId);
+        dbSaveRef = FirebaseDatabase.getInstance().getReference().child("Reports").child(currentUserId).child(uuid.toString());
         captureImgRef = FirebaseStorage.getInstance().getReference().child("capturedImages");
 
 //        setting up the title for the ActionBar
@@ -145,7 +146,7 @@ public class Report_NavBar extends AppCompatActivity {
                         filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                String downloadedUrl = uri.toString();
+                                downloadedUrl = uri.toString();
                                 mProgressDialog.dismiss();
                                 dbSaveRef.child("capturedimage").setValue(downloadedUrl)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -232,7 +233,6 @@ public class Report_NavBar extends AppCompatActivity {
                 }
             });
 
-
         }
 //        sending data to MYSQL via PHP using volley
         StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url, new Response.Listener<String>() {
@@ -268,13 +268,12 @@ public class Report_NavBar extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map <String, String> params = new HashMap<>();
 
-                String image = Base64.encodeToString(bytes,Base64.DEFAULT);
-
+//                String image = Base64.encodeToString(bytes,Base64.DEFAULT);
                 params.put("name",name);
                 params.put("email",email);
                 params.put("descr",descr);
                 params.put("place",place);
-                params.put("image",image);
+                params.put("image",downloadedUrl);
                 params.put("radiogroup",selectedRadio);
                 return params;
             }

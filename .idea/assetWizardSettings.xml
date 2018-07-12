@@ -49,7 +49,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/izow/Desktop/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/editor/ic_mode_edit_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/home/izow/Desktop/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_camera_enhance_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -59,7 +59,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="edit" />
+                            <entry key="color" value="f78cfe" />
+                            <entry key="outputName" value="camera_picker" />
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>
                         </option>

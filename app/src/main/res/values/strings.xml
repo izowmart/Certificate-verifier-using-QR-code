@@ -4,7 +4,6 @@
     <string name="tab_text_2">Scan</string>
     <string name="tab_text_3">Report</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
     <string name="Title">Certificate Verification</string>
     <string name="title">Certificate Verification</string>
 
@@ -41,5 +40,6 @@
     <string name="certificate_verification">Certificate Verification</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
+    <string name="image1">The app allows a user to scan the qr code embedded on the certificate presented to the user using the scanner provided</string>
 
 </resources>
