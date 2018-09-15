@@ -61,10 +61,6 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                mProgressDialog.setTitle("Registering the User");
-                mProgressDialog.setMessage("Please wait....");
-                mProgressDialog.show();
-
                 final String enteredEmail, enteredPassword,enteredConfirmPass;
                 enteredEmail = emailInput.getText().toString();
                 enteredPassword= passwordInput.getText().toString();
@@ -82,25 +78,31 @@ public class SignUpActivity extends AppCompatActivity {
                     confirmPassword.setError("Field Required!");
                 }else if (!enteredPassword.equals(enteredConfirmPass)){
                     confirmPassword.setError("Passwords not matching");
-                }
+                }else{
+                    mProgressDialog.setTitle("Registering the User");
+                    mProgressDialog.setMessage("Please wait....");
+                    mProgressDialog.show();
 
 //                create user
-            mAuth.createUserWithEmailAndPassword(enteredEmail,enteredPassword)
-                    .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()){
-                                mProgressDialog.dismiss();
-                                Toast.makeText(SignUpActivity.this, "SignUp failed"+task.getException(), Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(SignUpActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-                                finish();
+                    mAuth.createUserWithEmailAndPassword(enteredEmail,enteredPassword)
+                            .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (!task.isSuccessful()){
+                                        mProgressDialog.dismiss();
+                                        Toast.makeText(SignUpActivity.this, "SignUp failed"+task.getException(), Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(SignUpActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                        finish();
 
-                            }
+                                    }
 
-                        }
-                    });
+                                }
+                            });
+
+                }
+
 
             }
         });

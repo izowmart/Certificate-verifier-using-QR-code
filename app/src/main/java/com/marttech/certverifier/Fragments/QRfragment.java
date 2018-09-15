@@ -36,10 +36,8 @@ public class QRfragment extends Fragment implements ZXingScannerView.ResultHandl
 
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView mScannerView;
-    String singleParsed = "";
-    String dataParsed = "";
 
-    String server_url = "http://192.168.0.13/Certificate_verification/response.php";
+    String server_url = "http://192.168.42.93/Certificate_verification/response.php";
 
 
 

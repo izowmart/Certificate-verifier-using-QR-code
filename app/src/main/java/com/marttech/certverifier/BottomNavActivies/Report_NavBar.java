@@ -62,7 +62,7 @@ public class Report_NavBar extends AppCompatActivity {
     RadioGroup radiogroup;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference dbSaveRef;
+    private DatabaseReference dbSaveRef,dbReference;
     private StorageReference captureImgRef;
 
     private String image,selectedRadio,currentUserId,downloadedUrl;
@@ -71,8 +71,9 @@ public class Report_NavBar extends AppCompatActivity {
     static final int SELECT_FILE = 4;
     private Bitmap bitmap;
     private UUID uuid;
+    private byte [] dataBAOS;
 
-    String server_url ="http://192.168.0.13/Certificate_verification/report.php";
+    String server_url ="http://192.168.42.93/Certificate_verification/report.php";
     AlertDialog.Builder builder;
 
     @Override
@@ -91,6 +92,7 @@ public class Report_NavBar extends AppCompatActivity {
         currentUserId = mAuth.getCurrentUser().getUid();
         dbSaveRef = FirebaseDatabase.getInstance().getReference().child("Reports").child(currentUserId).child(uuid.toString());
         captureImgRef = FirebaseStorage.getInstance().getReference().child("capturedImages");
+        dbReference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
 
 //        setting up the title for the ActionBar
         Toolbar reportToobar = findViewById(R.id.reportToobar);
@@ -119,6 +121,20 @@ public class Report_NavBar extends AppCompatActivity {
                 cameraIntent();
             }
         });
+        dbReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild("username")){
+                    String myProfileName = dataSnapshot.child("username").getValue().toString();
+                    ETname.setText(myProfileName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
     private void cameraIntent(){
         Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -133,7 +149,7 @@ public class Report_NavBar extends AppCompatActivity {
             bitmap = (Bitmap) extras.get("data");
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
-            byte [] dataBAOS = baos.toByteArray();
+            dataBAOS = baos.toByteArray();
 
             final StorageReference filePath = captureImgRef.child(currentUserId +".jpg");
             filePath.putBytes(dataBAOS).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -215,11 +231,11 @@ public class Report_NavBar extends AppCompatActivity {
             mProgressDialog.show();
 
             HashMap dataParams = new HashMap<>();
+            dataParams.put("radiogroup",selectedRadio);
             dataParams.put("name",name);
             dataParams.put("email",email);
             dataParams.put("descr",descr);
             dataParams.put("place",place);
-            dataParams.put("radiogroup",selectedRadio);
 
             dbSaveRef.updateChildren(dataParams).addOnCompleteListener(new OnCompleteListener() {
                 @Override
@@ -268,12 +284,12 @@ public class Report_NavBar extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map <String, String> params = new HashMap<>();
 
-//                String image = Base64.encodeToString(bytes,Base64.DEFAULT);
+                String image = Base64.encodeToString(dataBAOS,Base64.DEFAULT);
                 params.put("name",name);
                 params.put("email",email);
                 params.put("descr",descr);
                 params.put("place",place);
-                params.put("image",downloadedUrl);
+                params.put("image",image);
                 params.put("radiogroup",selectedRadio);
                 return params;
             }

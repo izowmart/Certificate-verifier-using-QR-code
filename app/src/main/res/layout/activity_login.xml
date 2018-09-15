@@ -68,10 +68,18 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorWhite"
         android:text="@string/loginBtn"
-        android:paddingBottom="16dp"
+        android:paddingBottom="10dp"
         android:textStyle="bold"
         android:background="@color/colorPrimary"
         android:layout_marginTop="8dp"/>
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_authBtn"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@+id/login_button"
+        android:layout_marginTop="8dp">
+
+    </com.google.android.gms.common.SignInButton>
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,7 +88,7 @@
         android:layout_marginTop="24dp"
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/sign_up"
-        android:layout_below="@+id/login_button"
+        android:layout_below="@+id/google_authBtn"
         android:layout_centerHorizontal="true"/>
     <TextView
         android:layout_width="wrap_content"
@@ -91,6 +99,5 @@
         android:text="@string/forgot_password"
         android:layout_below="@+id/register"
         android:layout_centerHorizontal="true"/>
-
 
 </RelativeLayout>

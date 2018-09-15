@@ -99,7 +99,6 @@ public class Profile_NavBar extends AppCompatActivity {
                 if (dataSnapshot.exists()){
                     String myProfileImg = dataSnapshot.child("profileimage").getValue().toString();
                     String myProfileName = dataSnapshot.child("username").getValue().toString();
-                    String myProfileName_2 = dataSnapshot.child("username").getValue().toString();
                     String myProfilePhone = dataSnapshot.child("phone").getValue().toString();
                     String myProfileEmail = dataSnapshot.child("email").getValue().toString();
                     String myProfilePlace = dataSnapshot.child("premises").getValue().toString();
@@ -109,7 +108,7 @@ public class Profile_NavBar extends AppCompatActivity {
                             .placeholder(R.drawable.profile)
                             .into(profileImg);
                     profileName.setText(myProfileName);
-                    profileName_2.setText(myProfileName_2);
+                    profileName_2.setText(myProfileName);
                     premises.setText(myProfilePlace);
                     phone.setText(myProfilePhone);
                     email.setText(myProfileEmail);
