@@ -4,3 +4,5 @@
 # The system also uses firebase authentication to log in the uses and to register users using google auth.
 # Firebase is also used to store reports sent for an easy retrieval as the appear sent to the Admin mysql database.
 # certificates have to be embeded using qr code image that only our application can decode and encrypt fetching data from the MYsql database.
+# screenshots of the application are as bellow;
+
