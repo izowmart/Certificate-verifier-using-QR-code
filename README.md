@@ -6,3 +6,4 @@
 # certificates have to be embeded using qr code image that only our application can decode and encrypt fetching data from the MYsql database.
 # screenshots of the application are as bellow;
 
+https://github.com/izowmart/Certificate-verifier-using-QR-code/issues/1#issue-427279380
